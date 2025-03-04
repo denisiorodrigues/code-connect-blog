@@ -26,3 +26,7 @@ Exeutar o programa
 ```bah
 json-server posts.json -p 3042
 ```
+
+## LOG
+
+Utilizamos o winston para realizar o log da aplicação 

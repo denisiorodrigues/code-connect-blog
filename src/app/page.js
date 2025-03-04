@@ -3,7 +3,7 @@ import logger from "@/logger";
 
 
 async function getAllPosts() {
-  const response = await fetch('http://localhost:3042/posts')
+  const response = await fetch('http://localhost:3042/postss')
   if(!response.ok) {
     logger.error("Ops, algo ocorreu mal")
   }

@@ -1,8 +1,17 @@
 import { createLogger, format, transports } from 'winston';
+const { combine, timestamp, label, printf } = format;
+
+const myFormat = printf(({ level, message, label, timestamp }) => {
+  return `${timestamp} - ${level}: ${message}`;
+});
 
 const logger = createLogger({
   level: 'info',
-  format: format.json(),
+  format: combine(
+    label({ label: 'right meow!' }),
+    timestamp(),
+    myFormat
+  ),
   transports: [
     //
     // - Write all logs with importance level of `error` or less to `error.log`

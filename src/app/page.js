@@ -3,7 +3,7 @@ import logger from "@/logger";
 
 
 async function getAllPosts() {
-  const response = await fetch('http://localhost:3042/postss')
+  const response = await fetch('http://localhost:3042/posts')
   if(!response.ok) {
     logger.error("Ops, algo ocorreu mal")
   }
@@ -17,8 +17,9 @@ export default async function Home() {
   console.log(posts)
   return (
     <main>
-      {posts.map(post => <CardPost post={post} />)}
-       
+      {
+        posts.map(post => <CardPost post={post} />)
+      }
     </main>
   );
 }

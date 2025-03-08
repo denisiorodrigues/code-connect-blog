@@ -1,9 +1,10 @@
 import { CardPost } from "@/components/CardPost";
 import logger from "@/logger";
 import styles from './page.module.css'
+import Link from "next/link";
 
-async function getAllPosts() {
-  const response = await fetch('http://localhost:3042/posts').catch((error) => {
+async function getAllPosts(page = 1) {
+  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=4`).catch((error) => {
     logger.error("Falha na requisição ao servidor." + error)
   })
 
@@ -16,14 +17,18 @@ async function getAllPosts() {
 } 
  
 
-export default async function Home() {
-  const posts = await getAllPosts()
+export default async function Home({ searchParams }) {
+  const curretPage = searchParams?.page || 1
+  const { data: posts, next, prev } = await getAllPosts(curretPage)
   return (
     <main className={styles.grid}>
-
       {
         posts.map(post => <CardPost key={post.id}  post={post} />)
       }
+      <div className={styles.links}>
+        { prev && <Link href={`/?page=${prev}`}>Anterior</Link> }
+        { next && <Link href={`/?page=${next}`}>Próxima</Link> }
+      </div>
     </main>
   );
 }

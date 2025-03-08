@@ -23,3 +23,21 @@ body {
 .main-content {
   flex-grow: 1;
 }
+
+a {
+  color: #81FE88;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+  text-decoration-line: underline;
+  transition: color 0.3s;
+}
+
+a:visited {
+  color: #81FE88;
+}
+
+a:hover {
+  color: #0dff41;
+}

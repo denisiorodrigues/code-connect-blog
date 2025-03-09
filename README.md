@@ -66,3 +66,12 @@ Para instalar, basta executar o código abaixo.
 ```bash
 npm install remark remark-hmtl
 ```
+## Banco de Dados
+
+Vamos utiliza o prisma, o mais famoso ORM para javascript.
+
+para rodar a migration vamos utilizar o código abaixo
+
+```bash
+npx prisma migrate dev --name init
+```

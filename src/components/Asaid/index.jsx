@@ -4,7 +4,7 @@ import logo from './logo.png'
 
 export function Aside() {
     return (
-        <aside>
+        <aside className={styles.aside}>  
             <Image src = {logo} alt='Logo da Code Connect'/>
         </aside>
     )

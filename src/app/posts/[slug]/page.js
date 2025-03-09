@@ -2,7 +2,6 @@ import html from 'remark-html';
 import { remark } from 'remark';
 import logger from "@/logger"
 
-import Post from "@/components/Post"
 import { CardPost } from "@/components/CardPost";
 
 import styles from './page.module.css'

@@ -2,18 +2,19 @@ import { CardPost } from "@/components/CardPost";
 import logger from "@/logger";
 import styles from './page.module.css'
 import Link from "next/link";
+import db from "../../prisma/db";
 
 async function getAllPosts(page = 1) {
-  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=4`).catch((error) => {
-    logger.error("Falha na requisição ao servidor." + error)
-  })
+  try{
+    
+    const posts = await db.post.findMany()
+    
+    return { data:posts, next: null, prev: null }
 
-  if(!response || !response.ok) {
-    logger.error("Problema ao obter os posts")
-    return []
+  } catch (error) {
+    logger.error(error)
+    return { data:[], next: null, prev: null }
   }
-
-  return response.json()
 } 
  
 

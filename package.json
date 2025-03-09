@@ -1,6 +1,6 @@
 {
   "name": "code-connect-blog",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "server": "json-server ./src/api/posts.json -p 3042"
+  },
+  "prisma" : {
+    "seed" : "node prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^6.4.1",

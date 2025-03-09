@@ -25,7 +25,7 @@ model User {
 
 model Post {
   id        String   @id @default(cuid())
-  conver    String
+  cover    String
   title     String
   slug      String   @unique
   body      String

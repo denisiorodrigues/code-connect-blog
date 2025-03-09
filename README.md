@@ -54,3 +54,15 @@ const logger = createLogger({
 
 export default logger
 ```
+
+## Markdown
+
+Especificamente no nosso post, temos um bloco de código escrito em markdown no texto. Precisamos transformar esse markdown em algo legível para as pessoas leitoras, sem as crases consecutivas, barras e assim por diante.
+
+Existem várias formas de fazer isso, mas o Next sugere em sua documentação o uso de duas bibliotecas em conjunto, a remark e remark-html. Essas duas bibliotecas juntas vão transformar o markdown em HTML para ser renderizado na nossa aplicação.
+
+Para instalar, basta executar o código abaixo.
+
+```bash
+npm install remark remark-hmtl
+```

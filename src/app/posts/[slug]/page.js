@@ -1,4 +1,11 @@
+import html from 'remark-html';
+import { remark } from 'remark';
 import logger from "@/logger"
+
+import Post from "@/components/Post"
+import { CardPost } from "@/components/CardPost";
+
+import styles from './page.module.css'
 
 async function getPost(slug) {
   const response = await fetch(`http://localhost:3042/posts?slug=${slug}`).catch((error) => {
@@ -16,16 +23,30 @@ async function getPost(slug) {
     return {}
   }
 
-  return data[0]
+  const post = data[0]
+
+  const processedContent = await remark()
+  .use(html)
+  .process(post.markdown);
+  
+  const contentHtml = processedContent.toString();
+  
+  post.markdown = contentHtml
+  
+  return post
 }
 
 export default async function SlugPage({ params }) {
     const { slug } = params
     const post = await getPost(slug)
     return (
-      <div>
-        <h1>{post.title}</h1>
-        <p>{post.content}</p>
-      </div>
+        <div>
+            <CardPost post={post} highlight />
+            <h3 className={styles.subtitle}>Código:</h3>
+            <div className={styles.code}>
+                <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
+            </div>
+        </div>
+    //   <Post {...post} />
     );
 }

@@ -41,3 +41,10 @@ undefined [undefined] info: Posts carregados com sucesso
 2025-03-08T11:22:15.903Z - info: Posts carregados com sucesso
 2025-03-09T13:27:00.700Z - error: Problema ao obter os posts
 2025-03-09T18:59:36.775Z - error: author is not defined
+2025-03-12T18:40:49.258Z - error: 
+Invalid `prisma.post.findMany()` invocation:
+
+
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.

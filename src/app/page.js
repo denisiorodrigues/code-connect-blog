@@ -8,9 +8,9 @@ async function getAllPosts(page = 1) {
   try{
     
     const posts = await db.post.findMany({
-      // include: {
-      //   author: true
-      // }
+      include: {
+        author: true
+      }
     })
     
     return { data:posts, next: null, prev: null }

@@ -48,3 +48,11 @@ Invalid `prisma.post.findMany()` invocation:
 Can't reach database server at `localhost:5432`
 
 Please make sure your database server is running at `localhost:5432`.
+2025-03-14T01:06:50.675Z - error: Post com o slug construindo-spa-com-vuejsa não foi encontrado
+2025-03-14T01:06:50.676Z - error: Falha ao obter o post com o slug: 
+2025-03-14T01:06:50.679Z - error: Post com o slug construindo-spa-com-vuejsa não foi encontrado
+2025-03-14T01:06:50.679Z - error: Falha ao obter o post com o slug: 
+2025-03-14T01:07:22.586Z - error: Falha ao obter o post com o slug: 
+2025-03-14T01:12:48.622Z - error: Falha ao obter o post com o slug: 
+2025-03-14T01:13:30.560Z - error: Falha ao obter o post com o slug: 
+2025-03-14T01:15:14.268Z - error: Falha ao obter o post com o slug: 

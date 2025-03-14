@@ -56,3 +56,71 @@ Please make sure your database server is running at `localhost:5432`.
 2025-03-14T01:12:48.622Z - error: Falha ao obter o post com o slug: 
 2025-03-14T01:13:30.560Z - error: Falha ao obter o post com o slug: 
 2025-03-14T01:15:14.268Z - error: Falha ao obter o post com o slug: 
+2025-03-14T16:58:57.487Z - error: 
+Invalid `prisma.post.findMany()` invocation:
+
+{
+  take: 4,
+  skip: 0,
+  where: {
+    include: {
+    ~~~~~~~
+      search: ""
+    },
+?   AND?: PostWhereInput | PostWhereInput[],
+?   OR?: PostWhereInput[],
+?   NOT?: PostWhereInput | PostWhereInput[],
+?   id?: StringFilter | String,
+?   cover?: StringFilter | String,
+?   title?: StringFilter | String,
+?   slug?: StringFilter | String,
+?   body?: StringFilter | String,
+?   markdown?: StringFilter | String,
+?   authorId?: IntFilter | Int,
+?   createdAt?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   author?: UserScalarRelationFilter | UserWhereInput
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  include: {
+    author: true
+  }
+}
+
+Unknown argument `include`. Available options are marked with ?.
+2025-03-14T16:59:07.117Z - error: 
+Invalid `prisma.post.findMany()` invocation:
+
+{
+  take: 4,
+  skip: 0,
+  where: {
+    include: {
+    ~~~~~~~
+      title: ""
+    },
+?   AND?: PostWhereInput | PostWhereInput[],
+?   OR?: PostWhereInput[],
+?   NOT?: PostWhereInput | PostWhereInput[],
+?   id?: StringFilter | String,
+?   cover?: StringFilter | String,
+?   title?: StringFilter | String,
+?   slug?: StringFilter | String,
+?   body?: StringFilter | String,
+?   markdown?: StringFilter | String,
+?   authorId?: IntFilter | Int,
+?   createdAt?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   author?: UserScalarRelationFilter | UserWhereInput
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  include: {
+    author: true
+  }
+}
+
+Unknown argument `include`. Available options are marked with ?.

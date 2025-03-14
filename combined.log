@@ -124,3 +124,5 @@ Invalid `prisma.post.findMany()` invocation:
 }
 
 Unknown argument `include`. Available options are marked with ?.
+2025-03-14T18:37:50.073Z - info: dados 
+2025-03-14T18:37:50.080Z - info: dados 

@@ -1,3 +1,6 @@
+'use server'
+
+import { unstable_cache } from "next/cache";
 import { CardPost } from "@/components/CardPost";
 import logger from "@/logger";
 import styles from './page.module.css'
@@ -5,25 +8,21 @@ import Link from "next/link";
 import db from "../../prisma/db";
 
 async function getAllPosts(page = 1, search) {
-  try{
-    
-    const where = {title : {
-      contains: search,
-      mode: 'insensitive'
-    }}
-    const perPage = 4
-    const skip = (page - 1) * perPage
-    const totalItems = await db.post.count({where})
-    const totalPages = Math.ceil(totalItems / perPage)
-    const next = page < totalPages ? page + 1 : null
-    const prev = page > 1 ? page - 1 : null
+  try {
 
-    if(search) {
-      where.title = {
+    const where = {
+      title: {
         contains: search,
         mode: 'insensitive'
       }
     }
+
+    const perPage = 4
+    const skip = (page - 1) * perPage
+    const totalItems = await db.post.count({ where })
+    const totalPages = Math.ceil(totalItems / perPage)
+    const next = page < totalPages ? page + 1 : null
+    const prev = page > 1 ? page - 1 : null
 
     const posts = await db.post.findMany({
       take: perPage,
@@ -31,33 +30,42 @@ async function getAllPosts(page = 1, search) {
       where,
       orderBy: {
         createdAt: 'desc'
-      },  
+      },
       include: {
         author: true
       }
     })
-    
-    return { data:posts, next, prev }
+
+    return { data: posts, next, prev }
 
   } catch (error) {
     logger.error(error)
-    return { data:[], next: null, prev: null }
+    return { data: [], next: null, prev: null }
   }
-} 
- 
+}
+
 
 export default async function Home({ searchParams }) {
   const curretPage = parseInt(searchParams?.page || 1)
   const search = searchParams?.q || ''
+
   const { data: posts, next, prev } = await getAllPosts(curretPage, search)
+  
+  // Uso do cache do Next.js com a função de busca de posts
+  // const { data: posts, next, prev } = await unstable_cache(
+  //   () => getAllPosts(curretPage, search),
+  //   undefined,
+  //   { tags: [`posts_${curretPage}`], revalidate: 60 }
+  // );
+
   return (
     <main className={styles.grid}>
       {
-        posts.map(post => <CardPost key={post.id}  post={post} />)
+        posts.map(post => <CardPost key={post.id} post={post} />)
       }
       <div className={styles.links}>
-        { prev && <Link href={{pathname: '/', query: { q:search, page: prev}}}>Anterior</Link> }
-        { next && <Link href={{pathname: '/', query: { q:search, page: next}}}>Próxima</Link> }
+        {prev && <Link href={{ pathname: '/', query: { q: search, page: prev } }}>Anterior</Link>}
+        {next && <Link href={{ pathname: '/', query: { q: search, page: next } }}>Próxima</Link>}
       </div>
     </main>
   );

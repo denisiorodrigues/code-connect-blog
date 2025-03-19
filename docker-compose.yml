@@ -15,13 +15,7 @@ services:
 
     environment:
       POSTGRES_DB: codeconnect_dev
-      # 'environment' define variáveis de ambiente dentro do contêiner.
-      # 'POSTGRES_DB' define o nome do banco de dados a ser criado automaticamente quando o contêiner for iniciado pela primeira vez. Aqui, o banco de dados será chamado de 'codeconnect_dev'.
-
-      POSTGRES_HOST_AUTH_METHOD: trust
-      # 'POSTGRES_HOST_AUTH_METHOD' define o método de autenticação.
-      # 'trust' significa que não é necessária senha para conectar ao banco de dados. Isso não é recomendado para ambientes de produção por razões de segurança.
-
+      POSTGRES_PASSWORD: senha123
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

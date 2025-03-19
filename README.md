@@ -1,6 +1,8 @@
 # Code Connet
 Aplicação em nextJs + reat para estudar os conceito do nextJS
 
+![Descrição da imagem](./docs/index-app.png)
+
 ## Iniciando
 
 Rodar a aplicação:
@@ -75,3 +77,22 @@ para rodar a migration vamos utilizar o código abaixo
 ```bash
 npx prisma migrate dev --name init
 ```
+
+Atualizar a base de dados e executar todas as migra~çoes pendentes.
+
+```bash
+npx prisma db push
+```
+
+Para executar o seeed
+
+```bash
+npx prisma migrate deploy
+```
+
+Esse comando é mais geral, serve para executar tudo: Migrações, seed (mas não funcionou)
+
+```bash
+npx prisma db seed
+```
+

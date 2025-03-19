@@ -4,6 +4,11 @@ Aplicação em nextJs + reat para estudar os conceito do nextJS
 ![Descrição da imagem](./docs/index-app.png)
 
 ## Iniciando
+Executar o docker compose
+
+```bash
+docker compose up
+```
 
 Rodar a aplicação:
 
